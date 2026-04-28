@@ -53,6 +53,18 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
+      - name: Clean up old Docker resources       # <-- ADD THIS
+        run: |
+        docker system prune -af --volumes
+
+      - name: Pull latest image from ECR          # <-- ADD THIS
+        run: |
+        docker pull "${{ steps.login-ecr.outputs.registry }}"/"${{ secrets.ECR_REPO }}":latest
+
+      - name: Stop existing container             # <-- ADD THIS
+        run: |
+        docker stop $(docker ps -q) 2>/dev/null || true
+        docker rm $(docker ps -aq) 2>/dev/null || true
       - name: Run Docker Image to serve users
         run: |
          docker run -d -e AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" -e AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" -e AWS_DEFAULT_REGION="${{ secrets.AWS_DEFAULT_REGION }}" -e PINECONE_API_KEY="${{ secrets.PINECONE_API_KEY }}" -e OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}" -p 8080:8080 "${{ steps.login-ecr.outputs.registry }}"/"${{ secrets.ECR_REPO }}":latest
