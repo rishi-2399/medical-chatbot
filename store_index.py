@@ -5,8 +5,8 @@ from src.helper import load_pdf_files, filter_minimal_docs, create_chunks_from_d
 from pinecone import Pinecone
 from pinecone import ServerlessSpec 
 from langchain_pinecone import PineconeVectorStore
-from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain.document_loaders import PyPDFLoader, DirectoryLoader
+from langchain.embeddings import HuggingFaceEmbeddings
 
 load_dotenv()
 
