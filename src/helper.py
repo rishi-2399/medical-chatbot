@@ -1,5 +1,5 @@
 from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema import Document
 from typing import List
@@ -63,6 +63,4 @@ def create_chunks_from_documents(documents, chunk_size=500, chunk_overlap=20):
 
 
 def download_embedding():
-    model_name = "sentence-transformers/all-MiniLM-L6-v2"
-    embeddings = HuggingFaceEmbeddings(model_name=model_name)
-    return embeddings
+    return OpenAIEmbeddings(model="text-embedding-3-small")
