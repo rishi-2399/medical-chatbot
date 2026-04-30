@@ -7,5 +7,3 @@ langchain-pinecone==0.1.3
 langchain-openai
 pinecone-client
 openai
-langchain-huggingface
-sentence-transformers
