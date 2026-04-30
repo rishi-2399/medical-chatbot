@@ -8,4 +8,4 @@ pinecone-client
 openai
 sentence-transformers
 huggingface-hub
--e .
+langchain-openai
