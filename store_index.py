@@ -5,8 +5,6 @@ from src.helper import load_pdf_files, filter_minimal_docs, create_chunks_from_d
 from pinecone import Pinecone
 from pinecone import ServerlessSpec 
 from langchain_pinecone import PineconeVectorStore
-from langchain.document_loaders import PyPDFLoader, DirectoryLoader
-from langchain.embeddings import HuggingFaceEmbeddings
 
 load_dotenv()
 
@@ -28,13 +26,14 @@ pc = Pinecone(api_key=pinecone_api_key)
 
 index_name = "medical-chatbot"  # change if desired
 
-if not pc.has_index(index_name):
-    pc.create_index(
-        name = index_name,
-        dimension=384,
-        metric = "cosine",
-        spec=ServerlessSpec(cloud="aws", region="us-east-1")
-    )
+existing_indexes = [index.name for index in pc.list_indexes()]
+if index_name not in existing_indexes:
+        pc.create_index(
+            name = index_name,
+            dimension=1536,
+            metric = "cosine",
+            spec=ServerlessSpec(cloud="aws", region="us-east-1")
+        )
 index = pc.Index(index_name)
 
 docsearch = PineconeVectorStore.from_documents(

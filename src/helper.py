@@ -4,7 +4,6 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema import Document
 from typing import List
 import re
-from langchain_huggingface import HuggingFaceEmbeddings
 
 
 def load_pdf_files(data):
@@ -64,4 +63,4 @@ def create_chunks_from_documents(documents, chunk_size=500, chunk_overlap=20):
 
 
 def download_embedding():
-    return HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    return OpenAIEmbeddings(model="text-embedding-ada-002")
