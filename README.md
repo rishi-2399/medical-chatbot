@@ -49,31 +49,9 @@ Unlike generic AI chatbots, this system retrieves answers **grounded in real med
 
 ## 🏗️ Architecture
 
-```
-User Query
-    │
-    ▼
-┌─────────────────────────────────────────────┐
-│              Flask Web App                  │
-│                 (app.py)                    │
-└───────────────────┬─────────────────────────┘
-                    │
-                    ▼
-┌─────────────────────────────────────────────┐
-│           LangChain RAG Pipeline            │
-│                                             │
-│  Query → Embed → Retrieve → Generate       │
-└──────┬──────────────────────────┬───────────┘
-       │                          │
-       ▼                          ▼
-┌─────────────┐          ┌────────────────┐
-│  Pinecone   │          │   OpenAI GPT   │
-│ Vector DB   │          │   4o-mini      │
-│ (Retriever) │          │  (Generator)   │
-└─────────────┘          └────────────────┘
-```
-
----
+<div align="center">
+  <img src="https://drive.google.com/uc?export=view&id=1lPEYrveF9GlqoQX877dDgLgDAIYuKmbg" alt="Medical Chatbot Demo" width="1500"/>
+</div>
 
 ## 🛠️ Tech Stack
 
