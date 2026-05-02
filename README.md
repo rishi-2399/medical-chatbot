@@ -49,9 +49,7 @@ Unlike generic AI chatbots, this system retrieves answers **grounded in real med
 
 ## 🏗️ Architecture
 
-<div align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1lPEYrveF9GlqoQX877dDgLgDAIYuKmbg" alt="Medical Chatbot Demo" width="1500"/>
-</div>
+<img src="https://drive.google.com/uc?export=view&id=1blE966Mwlw7F9WrX0M8FkSY1qCYSGbwc" alt="Medical Chatbot Demo" width="100%"/>
 
 ## 🛠️ Tech Stack
 
